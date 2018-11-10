@@ -1,0 +1,48 @@
+<html>
+<head>
+<script src="http://sequencer.publiclab.org/node_modules/jquery/dist/jquery.min.js"></script>
+<style>
+svg {
+  margin: 0;
+  display: block;
+}
+.col { float: left; margin-left: -18px; }
+.col-odd { margin-top: 30px; }
+.body { overflow: hidden; width: 100%; height: 100%; }
+.canvas { margin: -40px; width:130%; }
+</style>
+
+</head>
+<body>
+
+<div class="canvas">
+  <div class="pair">
+    <div class="col col-odd"></div>
+    <div class="col"></div>
+  </div>
+</div>
+
+<script>
+
+(function() {
+var height = 30;
+var cols = 12;
+
+for (var i = 0; i < height; i++) {
+  $('.col').append('<svg height="62" width="72"><polygon points="72,31 54,61 18,61 1,31 18,1 54,1 72,31" fill="white" stroke="#888" stroke-width="2"/></svg>');
+}
+
+for (var i = 0; i < cols/2; i++) {
+  $('body').append($('.pair').clone());
+}
+
+$('svg').click(function(n) {
+  if ($(this).find('polygon').attr('fill') === 'white')
+    $(this).find('polygon').attr('fill','black');
+  else
+    $(this).find('polygon').attr('fill','white');
+});
+})();
+</script>
+</body>
+</html>
